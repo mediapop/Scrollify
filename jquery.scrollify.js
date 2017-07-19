@@ -520,9 +520,9 @@ if touchScroll is false - update index
 			},
 			init: function() {
 				if (document.addEventListener && settings.touchScroll) {
-					document.addEventListener('touchstart', swipeScroll.touchHandler, false);
-					document.addEventListener('touchmove', swipeScroll.touchHandler, false);
-					document.addEventListener('touchend', swipeScroll.touchHandler, false);
+					document.addEventListener('touchstart', swipeScroll.touchHandler, scrollOptions);
+					document.addEventListener('touchmove', swipeScroll.touchHandler, scrollOptions);
+					document.addEventListener('touchend', swipeScroll.touchHandler, scrollOptions);
 				}
 			}
 		};
@@ -800,9 +800,9 @@ if touchScroll is false - update index
 		$window.off('keydown', manualScroll.keyHandler);
 
 		if (document.addEventListener && settings.touchScroll) {
-			document.removeEventListener('touchstart', swipeScroll.touchHandler, false);
-			document.removeEventListener('touchmove', swipeScroll.touchHandler, false);
-			document.removeEventListener('touchend', swipeScroll.touchHandler, false);
+			document.removeEventListener('touchstart', swipeScroll.touchHandler, scrollOptions);
+			document.removeEventListener('touchmove', swipeScroll.touchHandler, scrollOptions);
+			document.removeEventListener('touchend', swipeScroll.touchHandler, scrollOptions);
 		}
 		heights = [];
 		names = [];
