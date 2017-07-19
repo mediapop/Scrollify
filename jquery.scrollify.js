@@ -70,6 +70,7 @@ if touchScroll is false - update index
 		firstLoad = true,
 		initialised = false,
 		destination = 0,
+		scrollOptions = false,
 		wheelEvent = 'onwheel' in document ? 'wheel' : document.onmousewheel !== undefined ? 'mousewheel' : 'DOMMouseScroll',
 		settings = {
 			//section should be an identifier that is the same for each section
@@ -91,6 +92,20 @@ if touchScroll is false - update index
 			afterResize:function() {},
 			afterRender:function() {}
 		};
+
+	// Some modern browsers requires passive to be set to be allow us to cancel events. We are performing
+	// Mozillas check to see if passive is an option, otherwise fall back to just setting capture to false.
+	// https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Safely_detecting_option_support
+    try {
+        var options = Object.defineProperty({}, "passive", {
+            get: function () {
+                scrollOptions = {capture: false, passive: false};
+            }
+        });
+
+        window.addEventListener("test", null, options);
+    } catch (err) { }
+
 	function animateScroll(index,instant,callbacks,toTop) {
 		if(currentIndex===index) {
 			callbacks = false;
