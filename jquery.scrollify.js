@@ -676,7 +676,7 @@ if touchScroll is false - update index
 					elements[i] = $this;
 					try {
 						if($(names[i]).length && window.console) {
-							console.warn("Scrollify warning: Section names can't match IDs - this will cause the browser to anchor.");
+							// console.warn("Scrollify warning: Section names can't match IDs - this will cause the browser to anchor.");
 						}
 					} catch (e) {}
 
